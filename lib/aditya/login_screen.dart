@@ -34,7 +34,7 @@ class _LoginPageState extends State<LoginPage> {
         .setPhoneNumber(phoneNumber);
         print("AD-"+phoneNumber);
 
-    bool isRegistered = true;//await _phoneAuthService.isPhoneNumberRegistered(phoneNumber);
+    bool isRegistered = await _phoneAuthService.isPhoneNumberRegistered(phoneNumber);
     
     isRegistered?print("AD-true"):print("AD-true");
     if (isRegistered) {
