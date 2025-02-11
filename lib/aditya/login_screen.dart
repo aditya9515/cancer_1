@@ -32,10 +32,11 @@ class _LoginPageState extends State<LoginPage> {
     String phoneNumber = _phoneController.text.trim();
     Provider.of<PhoneProvider>(context, listen: false)
         .setPhoneNumber(phoneNumber);
+        print("AD-"+phoneNumber);
 
-    bool isRegistered =
-        await _phoneAuthService.isPhoneNumberRegistered(phoneNumber);
-
+    bool isRegistered = await _phoneAuthService.isPhoneNumberRegistered(phoneNumber);
+    
+    isRegistered?print("AD-true"):print("AD-true");
     if (isRegistered) {
       await _phoneAuthService.verifyPhoneNumber(
         phoneNumber: phoneNumber,
@@ -56,6 +57,7 @@ class _LoginPageState extends State<LoginPage> {
         codeSent: (String verificationId) {
           setState(() {
             _verificationId = verificationId;
+            print("AD-"+verificationId);
             _isCodeSent = true;
             _isLoading = false;
           });
